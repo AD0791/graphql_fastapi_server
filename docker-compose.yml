@@ -1,0 +1,13 @@
+version: '3.9'
+services:
+  mongo:
+    container_name: myMongoDB
+    image: mongo
+    ports:
+      - 27017:27017
+    networks:
+      backend-graphql:
+        driver: bridge
+networks:
+  backend-graphql:
+    driver: bridge
