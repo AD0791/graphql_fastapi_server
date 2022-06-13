@@ -6,8 +6,7 @@ services:
     ports:
       - 27017:27017
     networks:
-      backend-graphql:
-        driver: bridge
+      - backend-graphql
 networks:
   backend-graphql:
     driver: bridge
