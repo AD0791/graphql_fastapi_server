@@ -7,6 +7,24 @@ services:
       - 27017:27017
     networks:
       - backend-graphql
+  graphqlserver:
+    container_name: graphQl-Server
+    image: graphqlserver
+    volumes:
+      - ./:/usr/src/app
+      #- ./:/app
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    ports:
+      - 5000:5000
+    networks:
+      - backend-graphql
+    environment:
+      - MONGODB_URI=${MONGODB_URI}
+      - PORT=${PORT}
+    depends_on:
+      - mongo
 networks:
   backend-graphql:
     driver: bridge
